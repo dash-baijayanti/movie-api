@@ -109,7 +109,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/documentation", (req, res) => {
-  res.sendFile("public/documentation.html", { root: __dirname });
+  res.sendFile("/documentation.html", { root: __dirname });
 });
 
 app.get("/movies", (req, res) => {
@@ -123,6 +123,6 @@ app.use((err, req, res, next) => {
 });
 
 // listen for requests
-app.listen(8080, () => {
-  console.log("Your app is listening on port 8080");
+app.listen(5501, () => {
+  console.log("Your app is listening on port 5501");
 });
