@@ -27,7 +27,7 @@ Once the server is running, you can access the app in your browser at `http://lo
 
 ### Installation
 
-1. Clone the repository: git clone https://github.com/yourusername/movies-api.git
+1. Clone the repository: git clone https://github.com/dash-baijayanti/movie-api.git
 2. Navigate to the project directory: cd movies-api
 3. Install dependencies: npm install
 4. Start the server: npm start
