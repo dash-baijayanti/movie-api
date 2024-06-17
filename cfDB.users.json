@@ -1,0 +1,76 @@
+[{
+  "_id": {
+    "$oid": "66694be3897357c799cdce03"
+  },
+  "userName": "john_doe",
+  "email": "john.doe@example.com",
+  "password": "password123",
+  "dateOfBirth": {
+    "$date": "1991-06-08T00:00:00.000Z"
+  },
+  "favMovies": [
+    {
+      "$oid": "66694604897357c799cdcdfe"
+    },
+    {
+      "$oid": "66694604897357c799cdcdfd"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6669514b897357c799cdce05"
+  },
+  "userName": "alice_jones",
+  "email": "alice.jones@example.com",
+  "password": "password123",
+  "dateOfBirth": {
+    "$date": "1985-03-03T00:00:00.000Z"
+  },
+  "favMovies": [
+    {
+      "$oid": "66694604897357c799cdcdfd"
+    },
+    {
+      "$oid": "66694604897357c799cdcdfe"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6669514b897357c799cdce06"
+  },
+  "userName": "bob_brown",
+  "email": "bob.brown@example.com",
+  "password": "password123",
+  "dateOfBirth": {
+    "$date": "1988-04-04T00:00:00.000Z"
+  },
+  "favMovies": [
+    {
+      "$oid": "66680abe897357c799cdcdf7"
+    },
+    {
+      "$oid": "666808be897357c799cdcdf6"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6669514b897357c799cdce07"
+  },
+  "userName": "charlie_davis",
+  "email": "charlie.davis@example.com",
+  "password": "password123",
+  "dateOfBirth": {
+    "$date": "1995-05-05T00:00:00.000Z"
+  },
+  "favMovies": [
+    {
+      "$oid": "66694604897357c799cdcdfd"
+    },
+    {
+      "$oid": "66694604897357c799cdce00"
+    }
+  ]
+}]
