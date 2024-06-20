@@ -10,10 +10,10 @@ const Users = Models.User;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-mongoose.connect("mongodb://localhost:27017/myFlixDB", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+// mongoose.connect("mongodb://localhost:27017/myFlixDB", {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
 
 app.use(bodyParser.json());
 // server
@@ -51,7 +51,7 @@ let users = [
     email: "charlie.davis@example.com",
     password: "password123",
     dateOfBirth: "1995-05-05",
-    favMovies: ["PK"],
+    favMovies: [""],
   },
 ];
 
@@ -277,8 +277,15 @@ let movies = [
   },
 ];
 
+
 // express static function
 app.use(express.static("public"));
+
+// welcome note
+app.get('/', async(req, res) => {
+  res.status(201).send('welcome to MyFlixApp');
+});
+
 
 // using mongoose create/add a new user
 app.post("/users", async (req, res) => {
@@ -308,7 +315,7 @@ app.post("/users", async (req, res) => {
     });
 });
 
-// READ in mongoose
+// READ users in mongoose
 app.get("/users", async (req, res) => {
   await users
     .find()
@@ -358,12 +365,11 @@ app.put("/users/:Username", async (req, res) => {
 
 // add movie to users list of favMovies
 app.post("/users/:Username/movies/:MovieID", async (req, res) => {
-  await users
-    .findOneAndUpdate(
-      { Username: req.params.Username },
-      { $push: { Favmovies: req.params.MovieID } },
-      { new: true }
-    )
+  await Users.findOneAndUpdate(
+    { Username: req.params.Username },
+    { $push: { Favmovies: req.params.MovieID } },
+    { new: true }
+  )
     .then((updatedUser) => {
       res.json(updatedUser);
     })
@@ -372,20 +378,86 @@ app.post("/users/:Username/movies/:MovieID", async (req, res) => {
     });
 });
 
+// DELETE movie from favmovies list
+app.delete('/users/:Username/movies/:MovieID', async(req,res) => {
+  await Users.findOneAndUpdate({ MovieID: req.params.MovieID})
+  .then((movieid) =>{
+    if (!movieid) {
+      res.status(400).send(req.params.MovieID + "was not found");
+    } else {
+      res.status(200).send(req.params.MovieID + "was deleted");
+    }
+  })
+  .catch((err) => {
+    console.error(err);
+    res.status(500).send("Error:" + err);
+  });
+});
+
 // DELETE user by username
-app.delete('/users/:Username', async(req,res) => {
-await users.findOneAndUpdate({ Username: req.params.Username})
-.then((user) => {
-  if(!user){
-res.status(400).send(req.params.Username+'was not found');
-  }else{
-    res.status(200).send(req.params.Username +'was deleted');
-  }
-})
-.catch((err) => {
-  console.error(err);
-  res.status(500).send('Error:'+ err);
-})
+app.delete("/users/:Username", async (req, res) => {
+  await Users.findOneAndUpdate({ Username: req.params.Username })
+    .then((user) => {
+      if (!user) {
+        res.status(400).send(req.params.Username + "was not found");
+      } else {
+        res.status(200).send(req.params.Username + "was deleted");
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error:" + err);
+    });
+});
+
+// READ all movies
+app.get("/movies", async (req, res) => {
+  await Movies.find()
+    .then((movies) => {
+      res.status(201).json(movies);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error:" + err);
+    });
+});
+
+// GET movies by Title
+app.get("/movies/:Moviename", async (req, res) => {
+  await Movies.findOne({ Moviename: req.params.Moviename })
+    .then((movie) => {
+      res.json(movie);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error:" + err);
+    });
+});
+
+//GET Genre description by name
+app.get("movies/:Genre/:Genrename", async (req, res) => {
+  await movies
+    .findOne({ Genrename: req.params.Genrename })
+    .then((genre) => {
+      res.status(201).json(genre);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error:" + err);
+    });
+});
+
+// GET Director details by Director name
+app.get("movies/:Director/:Directorname", async (req, res) => {
+  await movies
+    .findOne({ Directorname: req.params.Directorname })
+    .then((director) => {
+      res.status(201).json(director);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error:" + err);
+    });
 });
 
 // listen for requests
