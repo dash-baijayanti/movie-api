@@ -5,19 +5,21 @@ let movieSchema = mongoose.Schema({
   Title: { type: String, required: true },
   Description: { type: String, required: true },
   Genre: {
-    Name: { type: String, required: true },
-    Description: { type: String, required: true },
+    Name: String,
+    Description: String, 
   },
   Director: {
-    Name: { type: String, required: true },
-    Bio: { type: String, required: true },
-    BirthYear: { type: Date },
-    DeathYear: { type: Date },
+    Name: String,
+    Bio: String,
+    BirthYear: Date,
+    DeathYear: Date
   },
   // Actors: [String],
   ImageUrl: { type: String },
   Featured: { type: Boolean },
 });
+
+let Movie = mongoose.model("Movie", movieSchema);
 
 let userSchema = mongoose.Schema({
   userName: { type: String, required: true },
@@ -28,7 +30,6 @@ let userSchema = mongoose.Schema({
 });
 
 // creation of models
-let Movie = mongoose.model("Movie", movieSchema);
 let User = mongoose.model("User", userSchema);
 
 // exporting the models

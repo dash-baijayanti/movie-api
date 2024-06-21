@@ -25,92 +25,117 @@
         }
 </style>
 <body>
-    <h1> Users details  endpoints </h1>
+    
     <table>
-       
-        <tr>
-            <th>HTTP Method</th>
-             <th>URL</th>
-             <th>Response</th>
-        </tr>
-        <tr>
-            <td>GET</td>
-            <td>/users</td>
-            <td> 
-                 [{
-                "id": 1,
-                "name": "Baijayanti",
-                "favMovies": [
-                    "Dhoom 2",
-                    "Cinderella"
-                ]
-            },
-            {
-                "id": 2,
-                "name": "KK",
-                "favMovies": []
-            },
-            {
-                "id": 3,
-                "name": "Moni",
-                "favMovies": [
-                    "PK"
-                ]
-            }
-        ]
-    </td>
-        </tr>
-        <tr>
-            <td>POST</td>
-            <td>/users</td>
-            <td>{
-                "name": "SEENA upadated",
-                "favMovies": "",
-                "id": "a1e952cd-0097-4490-9c70-b4d4ba33d349"
-            }</td>
-        </tr>
-        <tr>
-            <td>UPDATE</td>
-            <td>/users</td>
-            <td>{
-                "name": "SEENA upadated",
-                "favMovies": "",
-                "id": "a1e952cd-0097-4490-9c70-b4d4ba33d349"
-            }</td>
-        </tr>
-        <tr>
-            <td>DELETE</td>
-            <td>/users/2</td>
-            <td>2's user has been deleted</td>
-        </tr>
-    </table>
-    <h1> Movies data by endpoints</h1>
-    <table>
-        <tr>
-            <th>HTTP Method</th>
-             <th>URL</th>
-             <th>Response</th>
-        </tr>
-        <tr>
-            <td>GET</td>
-            <td>/movies/gerne/Romantic%20Film</td>
-            <td>{
-                "Name": "Romantic Film",
-                "Description": "The plot combines two love triangles set years apart. The first half covers friends on a college campus, while the second tells the story of a widower's young daughter who tries to reunite her dad with his old best friend."
-            }</td>
-        </tr>
-        <tr>
-            <td>GET</td>
-            <td>/movies/Director/Directorname</td>
-            <td>{}
-               </td>
-        </tr>
-        <tr>
-            <td>GET</td>
-            <td>/movies/pk</td>
-            <td>{
-               }</td>
-        </tr>
+        <h1>Welcome to MyFlix API Documentation</h1>
+        <p>This API provides access to information about movies, directors, and genres. Users can interact with the API to
+            retrieve data, update their profiles, and manage their list of favorite movies.</p>
+    
+        <div class="container">
+            <h1>MyFlix API Endpoints</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Models</th>
+                        <th scope="col">Method Type</th>
+                        <th scope="col">Endpoint URL</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Request Format</th>
+                        <th scope="col">Response Format</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Movies</td>
+                        <td>GET</td>
+                        <td>/movies</td>
+                        <td>Returns a list of all movies.</td>
+                        <td>N/A</td>
+                        <td>JSON array of movie objects</td>
+                    </tr>
+                    <tr>
+                        <td>Movies</td>
+                        <td>GET</td>
+                        <td>/movies/:title</td>
+                        <td>Returns data about a single movie based on the title.</td>
+                        <td>N/A</td>
+                        <td>JSON object containing movie details</td>
+                    </tr>
+                    <tr>
+                        <td>Movies</td>
+                        <td>GET</td>
+                        <td>/movies/genre/:genreName</td>
+                        <td>Returns data about a genre based on the name.</td>
+                        <td>N/A</td>
+                        <td>JSON array of movie objects</td>
+                    </tr>
+                    <tr>
+                        <td>Movies</td>
+                        <td>GET</td>
+                        <td>/movies/directors/:directorName</td>
+                        <td>Returns data about a director based on the name.</td>
+                        <td>N/A</td>
+                        <td>JSON array of movie objects</td>
+                    </tr>
+                    <tr>
+                        <td>Users</td>
+                        <td>POST</td>
+                        <td>/users</td>
+                        <td>Allows a new user to register.</td>
+                        <td>JSON object with user details<br>(Example: { "Username": "newUser", "Password": "password123", "Email": "newUser@example.com", "Birthday": "2000-01-01" })</td>
+                        <td>JSON object containing user details</td>
+                    </tr>
+                    <tr>
+                        <td>Users</td>
+                        <td>PUT</td>
+                        <td>/users/:Username</td>
+                        <td>Allows users to update their user information.</td>
+                        <td>JSON object with updated user details<br>(Example: { "Username": "updatedUser", "Password": "updatedPassword", "Email": "updatedEmail@example.com", "Birthday": "1990-01-01" })</td>
+                        <td>JSON object containing updated user details</td>
+                    </tr>
+                    <tr>
+                        <td>Users</td>
+                        <td>PATCH</td>
+                        <td>/users/:Username/movies/:MovieID</td>
+                        <td>Allows users to add a movie to their favorites list.</td>
+                        <td>N/A</td>
+                        <td>JSON object containing user details</td>
+                    </tr>
+                    <tr>
+                        <td>Users</td>
+                        <td>DELETE</td>
+                        <td>/users/:Username/movies/:MovieID</td>
+                        <td>Allows users to remove a movie from their favorites list.</td>
+                        <td>N/A</td>
+                        <td>JSON object containing user details</td>
+                    </tr>
+                    <tr>
+                        <td>Users</td>
+                        <td>DELETE</td>
+                        <td>/users/:Username</td>
+                        <td>Allows existing users to delete their accounts.</td>
+                        <td>N/A</td>
+                        <td>Text message (success or error message)</td>
+                    </tr>
+                    <tr>
+                        <td>Users</td>
+                        <td>GET</td>
+                        <td>/users</td>
+                        <td>Returns a list of all users.</td>
+                        <td>N/A</td>
+                        <td>JSON array of user objects</td>
+                    </tr>
+                    <tr>
+                        <td>Users</td>
+                        <td>GET</td>
+                        <td>/users/:Username</td>
+                        <td>Returns data about a single user based on the username.</td>
+                        <td>N/A</td>
+                        <td>JSON object containing user details</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </table>
     
 </body>
