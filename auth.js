@@ -1,3 +1,4 @@
+
 const jwtSecret = "passCODE";
 
 const jwt = require("jsonwebtoken"),
@@ -7,7 +8,6 @@ const jwt = require("jsonwebtoken"),
 require("./passport");
 
 let generateJWTToken = (user) => {
-  console.log(generateJWTToken);
   return jwt.sign(user, jwtSecret, {
     // this is the username encoding in JWT
     subject: user.userName,
@@ -21,7 +21,7 @@ let generateJWTToken = (user) => {
 // post login
 module.exports = (router) => {
   router.post("/login", (req, res) => {
-    
+    console.log(user);
     passport.authenticate("local", { session: false }, (error, user, info) => {
       if (error || !user) {
         return res.status(400).json({
