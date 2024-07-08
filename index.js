@@ -1,10 +1,11 @@
-const express = require("express");
-(bodyParser = require("body-parser")), (uuid = require("uuid"));
-const mongoose = require("mongoose");
-const Models = require("./models.js");
-const morgan = require("morgan");
-app = express();
-const { check, valiadationResult, validationResult } = require("express-validator");
+const express = require('express'),
+  app = express(),
+  morgan = require('morgan'),
+  bodyParser = require('body-parser'),
+  path = require('path'),
+  mongoose = require('mongoose'),
+  Models = require('./models.js'),
+  { check, validationResult } = require('express-validator');
 
 const Movies = Models.Movie;
 const Users = Models.User;
