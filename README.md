@@ -23,7 +23,7 @@ This is a simple movie app built with Node.js and Express that provides informat
 
 The Movie App is a Node.js application that serves information about movies through several endpoints. It uses Express for handling HTTP requests and Morgan for logging.
 
-Once the server is running, you can access the app in your browser at `http://localhost:8080`.
+Once the server is running, you can access the app in your browser at `http://localhost:5110`.
 
 ### Installation
 
@@ -31,6 +31,14 @@ Once the server is running, you can access the app in your browser at `http://lo
 2. Navigate to the project directory: cd movies-api
 3. Install dependencies: npm install
 4. Start the server: npm start
+
+### Prerequisites
+
+1. Node.js
+2. MongoDB Atlas account or a local MongoDB instance
+3. Heroku account for hosting
+4. Render. Check out these step-by-step instructions on switching from Heroku to Render to host your API (on the CareerFoundry Forum).
+5. Vercel. Check out these step-by-step instructions on how to deploy your Node project on Vercel.
 
 ### API Endpoints
 
@@ -48,25 +56,67 @@ Create New User
 
 Update User
 
-+ URL: /users/:id
++ URL: /users/:userName
 + Method: PUT
 + Description: Update user details.
 + Request Params:
-+ id (string): User ID
++ Name (string): User Name
 
 Add Favorite Movie to User
 
-+ URL: /users/:id/:movieTitle
++ URL: /users/:userName/:movieTitle
 + Method: POST
 + Description: Add a favorite movie to a user's list.
 + Request Params:
-+ id (string): User ID
++ Name (string): User Name
 + movieTitle (string): Movie Title
 
-### Contributing
+Delete User by userName
 
-Please read CONTRIBUTING.md for details on our code of conduct and the process for submitting pull requests.
++ URL: /users/:userName
++ Method: DELETE
++ Description: Delete a new user.
 
-### License
+Get All Movies
 
-This project is licensed under the MIT License - see the LICENSE.md file for details.
++ URL: /movies
++ Method: GET
++ Description: Retrieve a list of all movies.
+
+Get All Movies by Title
+
++ URL: /movies/:Title
++ Method: GET
++ Description: Retrieve a  movie by Title.
+
+Get movies and Description by Genre Name
+
++ URL: /movies/:Genre/:Title
++ Method: GET
++ Description: Retrieve movies by Genre Name.
+
+Get movies and details of director by director Name
+
++ URL: /movies/:Director/:Name
++ Method: GET
++ Description: Retrieve Movie Details by Director Name.
+
+### Error Handling
+
+Errors are handled by a centralized middleware function that captures errors and sends a JSON response with an appropriate status code and message.
+
+### Authentication
+
+This API uses JWT (JSON Web Token) for authentication. To access protected routes, you need to include a valid JWT token in the Authorization header of your requests.
+Implement CORS and Added password hashing to user schema.
+
+### Login
+
+To log in and receive a JWT token, use the following endpoint:
+
+### POST /login
+
+Request body parameters: Username, Password.
+Example: [For login](https://https://movie-api-7rmr.onrender.com/login)
+Hosting
+The MyFlix API is hosted on Render. You can access it at: [Render](https://movie-api-7rmr.onrender.com)

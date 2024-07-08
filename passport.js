@@ -1,7 +1,8 @@
 const passport = require("passport"),
   localStrategy = require("passport-local").Strategy,
-  Models = require("./models.js"),
-  passportJWT = require("passport-jwt");
+  Models = require("./models.js");
+passportJWT = require("passport-jwt");
+bcrypt = require("bcrypt");
 
 let Users = Models.User;
 JWTStrategy = passportJWT.Strategy;
@@ -14,23 +15,22 @@ passport.use(
       usernameField: "userName",
       passwordField: "password",
     },
-    async (username, Password, callback) => {
-      console.log(`${username} ${Password}`);
+
+    async (username, uPassword, callback) => {
+      console.log(`${username} ${uPassword}`);
       await Users.findOne({ userName: username })
         .then((user) => {
           if (!user) {
-            console.log("incorrect username");
+            console.log('incorrect username');
             return callback(null, false, {
-              message: "incorrect username or password.",
+              message: 'Incorrect username or password.',
             });
           }
-          if(!user.validatePassword(password)){
-            console.log('incorect password');
-            return callback(null,false, {
-             message: "incorrect password"
-            });
-          }
-          console.log("finished");
+          if (!user.validatePassword == function(uPassword) {
+            console.log('incorrect password');
+            return callback(null, false, { message: 'Incorrect password.' });
+          })
+          console.log('finished');
           return callback(null, user);
         })
         .catch((error) => {
@@ -38,8 +38,8 @@ passport.use(
             console.log(error);
             return callback(error);
           }
-        });
-    }
+        })
+      }
   )
 );
 
@@ -48,10 +48,10 @@ passport.use(
   new JWTStrategy(
     {
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-      secretOrKey: "passCODE"   
+      secretOrKey: "passCODE",
     },
     async (jwtPlayload, callback) => {
-      return await Users.findOne({userName: jwtPlayload.userName})
+      return await Users.findOne({ userName: jwtPlayload.userName })
         .then((user) => {
           return callback(null, user);
         })

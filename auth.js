@@ -1,4 +1,3 @@
-
 const jwtSecret = "passCODE";
 
 const jwt = require("jsonwebtoken"),
@@ -7,10 +6,10 @@ const jwt = require("jsonwebtoken"),
 // local passport file
 require("./passport");
 
-let generateJWTToken = (user) => {
-  return jwt.sign(user, jwtSecret, {
+let generateJWTToken = (users) => {
+  return jwt.sign(users, jwtSecret, {
     // this is the username encoding in JWT
-    subject: user.userName,
+    subject: users.userName,
     // this specifies that token will expire in 7 days
     expiresIn: "7d",
     // this is the algorithm used to encode the values of jwt
@@ -20,21 +19,20 @@ let generateJWTToken = (user) => {
 
 // post login
 module.exports = (router) => {
-  router.post("/login", (req, res) => {
-    console.log(user);
-    passport.authenticate("local", { session: false }, (error, user, info) => {
-      if (error || !user) {
+  router.post("/login", (req, res) => { 
+    passport.authenticate("local", { session: false }, (error, users, info) => {
+      if (error || !users) {
         return res.status(400).json({
           message: "something is wrong",
-          user: user,
+          users: users,
         });
       }
-      req.login(user, { session: false }, (error) => {
+      req.login(users, { session: false }, (error) => {
         if (error) {
           res.send(error);
         }
-        let token = generateJWTToken(user.toJSON());
-        return res.json({ user, token });
+        let token = generateJWTToken(users.toJSON());
+        return res.json({ users, token });
       });
     })(req, res);
   });
