@@ -1,11 +1,11 @@
 const passport = require("passport"),
   localStrategy = require("passport-local").Strategy,
-  Models = require("./models.js");
-passportJWT = require("passport-jwt");
-bcrypt = require("bcrypt");
+  Models = require("./models.js"),
+  passportJWT = require("passport-jwt");
+// bcrypt = require("bcrypt");
 
-let Users = Models.User;
-JWTStrategy = passportJWT.Strategy;
+let Users = Models.User,
+JWTStrategy = passportJWT.Strategy,
 ExtractJwt = passportJWT.ExtractJwt;
 
 //   basic HTTP authentication for login request
@@ -39,7 +39,7 @@ passport.use(
             return callback(error);
           }
         })
-      }
+    }
   )
 );
 

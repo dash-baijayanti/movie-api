@@ -117,6 +117,5 @@ To log in and receive a JWT token, use the following endpoint:
 ### POST /login
 
 Request body parameters: Username, Password.
-Example: [For login](https://https://movie-api-7rmr.onrender.com/login)
 Hosting
-The MyFlix API is hosted on Render. You can access it at: [Render](https://movie-api-7rmr.onrender.com)
+The MyFlix API is hosted on Render. You can access it at: [(https://movie-api-7rmr.onrender.com)]

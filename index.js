@@ -13,24 +13,24 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // using CORS
 const cors = require("cors");
-// app.use(cors());
+app.use(cors());
 // to allow only certain users
-  let allowedOrigins = ["http://localhost:5110", "http://testsite.com"];
-  app.use(
-    cors({
-      origin: (origin, callback) => {
-        if (!origin) return callback(null, true);
-        if (allowedOrigins.indexOf(origin) === -1) {
-          // if a specific origin is not found  on the list of allowed origins
-          let message =
-            "The CORs policy for this application doesnot allow access from origin" +
-            origin;
-          return callback(new Error(message), false);
-        }
-        return callback(null, true);
-      },
-    })
-  );
+  // let allowedOrigins = ["http://localhost:5110", "http://testsite.com"];
+  // app.use(
+  //   cors({
+  //     origin: (origin, callback) => {
+  //       if (!origin) return callback(null, true);
+  //       if (allowedOrigins.indexOf(origin) === -1) {
+  //         // if a specific origin is not found  on the list of allowed origins
+  //         let message =
+  //           "The CORs policy for this application doesnot allow access from origin" +
+  //           origin;
+  //         return callback(new Error(message), false);
+  //       }
+  //       return callback(null, true);
+  //     },
+  //   })
+  // );
 
 // import auth.js and passport.js file
 let auth = require("./auth")(app);
