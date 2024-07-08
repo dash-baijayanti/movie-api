@@ -112,7 +112,8 @@ Implement CORS and Added password hashing to user schema.
 
 ### Login
 
-To log in and receive a JWT token, use the following endpoint: [(http://localhost:5110/login?userName=alice_jones&password=password4563)]
+To log in and receive a JWT token
+[(http://localhost:5110/login?userName=alice_jones&password=password4563)]
 
 ### POST /login
 
