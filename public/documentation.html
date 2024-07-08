@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+ table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 18px;
+            text-align: center;
+            background-color: rgb(149, 241, 241);
+            
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #160000;
+            
+        }
+        th {
+            background-color: #f9c0c0;
+        }
+</style>
+<body>
+    
+    <table>
+        <h1>Welcome to MyFlix API Documentation</h1>
+        <p>This API provides access to information about movies, directors, and genres. Users can interact with the API to
+            retrieve data, update their profiles, and manage their list of favorite movies.</p>
+    
+        <div class="container">
+            <h1>MyFlix API Endpoints</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Models</th>
+                        <th scope="col">Method Type</th>
+                        <th scope="col">Endpoint URL</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Request Format</th>
+                        <th scope="col">Response Format</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Movies</td>
+                        <td>GET</td>
+                        <td>/movies</td>
+                        <td>Returns a list of all movies.</td>
+                        <td>N/A</td>
+                        <td>JSON array of movie objects</td>
+                    </tr>
+                    <tr>
+                        <td>Movies</td>
+                        <td>GET</td>
+                        <td>/movies/:title</td>
+                        <td>Returns data about a single movie based on the title.</td>
+                        <td>N/A</td>
+                        <td>JSON object containing movie details</td>
+                    </tr>
+                    <tr>
+                        <td>Movies</td>
+                        <td>GET</td>
+                        <td>/movies/genre/:genreName</td>
+                        <td>Returns data about a genre based on the name.</td>
+                        <td>N/A</td>
+                        <td>JSON array of movie objects</td>
+                    </tr>
+                    <tr>
+                        <td>Movies</td>
+                        <td>GET</td>
+                        <td>/movies/directors/:directorName</td>
+                        <td>Returns data about a director based on the name.</td>
+                        <td>N/A</td>
+                        <td>JSON array of movie objects</td>
+                    </tr>
+                    <tr>
+                        <td>Users</td>
+                        <td>POST</td>
+                        <td>/users</td>
+                        <td>Allows a new user to register.</td>
+                        <td>JSON object with user details<br>(Example: { "Username": "newUser", "Password": "password123", "Email": "newUser@example.com", "Birthday": "2000-01-01" })</td>
+                        <td>JSON object containing user details</td>
+                    </tr>
+                    <tr>
+                        <td>Users</td>
+                        <td>PUT</td>
+                        <td>/users/:Username</td>
+                        <td>Allows users to update their user information.</td>
+                        <td>JSON object with updated user details<br>(Example: { "Username": "updatedUser", "Password": "updatedPassword", "Email": "updatedEmail@example.com", "Birthday": "1990-01-01" })</td>
+                        <td>JSON object containing updated user details</td>
+                    </tr>
+                    <tr>
+                        <td>Users</td>
+                        <td>PATCH</td>
+                        <td>/users/:Username/movies/:MovieID</td>
+                        <td>Allows users to add a movie to their favorites list.</td>
+                        <td>N/A</td>
+                        <td>JSON object containing user details</td>
+                    </tr>
+                    <tr>
+                        <td>Users</td>
+                        <td>DELETE</td>
+                        <td>/users/:Username/movies/:MovieID</td>
+                        <td>Allows users to remove a movie from their favorites list.</td>
+                        <td>N/A</td>
+                        <td>JSON object containing user details</td>
+                    </tr>
+                    <tr>
+                        <td>Users</td>
+                        <td>DELETE</td>
+                        <td>/users/:Username</td>
+                        <td>Allows existing users to delete their accounts.</td>
+                        <td>N/A</td>
+                        <td>Text message (success or error message)</td>
+                    </tr>
+                    <tr>
+                        <td>Users</td>
+                        <td>GET</td>
+                        <td>/users</td>
+                        <td>Returns a list of all users.</td>
+                        <td>N/A</td>
+                        <td>JSON array of user objects</td>
+                    </tr>
+                    <tr>
+                        <td>Users</td>
+                        <td>GET</td>
+                        <td>/users/:Username</td>
+                        <td>Returns data about a single user based on the username.</td>
+                        <td>N/A</td>
+                        <td>JSON object containing user details</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </table>
+    
+</body>
+</html>
