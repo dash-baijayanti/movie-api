@@ -339,7 +339,7 @@ app.post(
     let errors = validationResult(req);
     
     if(!errors.isEmpty()){
-      return res.status(422).json( {errors: errors.arrary() } );
+      return res.status(422).json( {errors: errors } );
     }
 
     let hashedPassword = Users.hashPassword(req.body.password);
