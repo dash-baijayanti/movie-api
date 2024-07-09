@@ -1,11 +1,11 @@
-const express = require('express'),
+const express = require("express"),
   app = express(),
-  morgan = require('morgan'),
-  bodyParser = require('body-parser'),
-  path = require('path'),
-  mongoose = require('mongoose'),
-  Models = require('./models.js'),
-  { check, validationResult } = require('express-validator');
+  morgan = require("morgan"),
+  bodyParser = require("body-parser"),
+  path = require("path"),
+  mongoose = require("mongoose"),
+  Models = require("./models.js"),
+  { check, validationResult } = require("express-validator");
 
 const Movies = Models.Movie;
 const Users = Models.User;
@@ -16,22 +16,22 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const cors = require("cors");
 app.use(cors());
 // to allow only certain users
-  // let allowedOrigins = ["http://localhost:5110", "http://testsite.com"];
-  // app.use(
-  //   cors({
-  //     origin: (origin, callback) => {
-  //       if (!origin) return callback(null, true);
-  //       if (allowedOrigins.indexOf(origin) === -1) {
-  //         // if a specific origin is not found  on the list of allowed origins
-  //         let message =
-  //           "The CORs policy for this application doesnot allow access from origin" +
-  //           origin;
-  //         return callback(new Error(message), false);
-  //       }
-  //       return callback(null, true);
-  //     },
-  //   })
-  // );
+// let allowedOrigins = ["http://localhost:5110", "http://testsite.com"];
+// app.use(
+//   cors({
+//     origin: (origin, callback) => {
+//       if (!origin) return callback(null, true);
+//       if (allowedOrigins.indexOf(origin) === -1) {
+//         // if a specific origin is not found  on the list of allowed origins
+//         let message =
+//           "The CORs policy for this application doesnot allow access from origin" +
+//           origin;
+//         return callback(new Error(message), false);
+//       }
+//       return callback(null, true);
+//     },
+//   })
+// );
 
 // import auth.js and passport.js file
 let auth = require("./auth")(app);
@@ -337,9 +337,9 @@ app.post(
   async (req, res) => {
     // check the validation object for errors
     let errors = validationResult(req);
-    
-    if(!errors.isEmpty()){
-      return res.status(422).json( {errors: errors } );
+
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors });
     }
 
     let hashedPassword = Users.hashPassword(req.body.password);
@@ -353,7 +353,7 @@ app.post(
             password: hashedPassword,
             Email: req.body.Email,
             birthdate: req.body.birthdate,
-          })  
+          })
             .then((user) => {
               res.status(201).json(user);
             })
@@ -403,7 +403,7 @@ app.get(
 // UPDATE a user info by username
 app.put(
   "/users/:userName",
-  // validation 
+  // validation
   [
     check("userName", "userName is required").isLength({ min: 4 }),
     check(
@@ -416,6 +416,12 @@ app.put(
 
   passport.authenticate("jwt", { session: false }),
   async (req, res) => {
+    // check the validation object for errors
+    let errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors });
+    }
     let hashedPassword = Users.hashPassword(req.body.password);
     // condition for authentication
     if (req.user.userName !== req.params.userName) {
@@ -557,6 +563,6 @@ app.get(
 
 // listen for requests
 const port = process.env.PORT || 5110;
-app.listen(port, '0.0.0.0' , () => {
+app.listen(port, "0.0.0.0", () => {
   console.log("listening to port" + port);
 });
