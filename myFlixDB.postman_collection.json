@@ -1,0 +1,543 @@
+{
+	"info": {
+		"_postman_id": "152e8622-828a-4c85-b22b-5132cb13e624",
+		"name": "myFlixDB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "35353098"
+	},
+	"item": [
+		{
+			"name": "Create User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjY5NTE0Yjg5NzM1N2M3OTljZGNlMDUiLCJ1c2VyTmFtZSI6ImFsaWNlX2pvbmVzIiwiZW1haWwiOiJhbGljZS5qb25lc0BleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoicGFzc3dvcmQ0NTYzIiwiZGF0ZU9mQmlydGgiOiIxOTg1LTAzLTAzVDAwOjAwOjAwLjAwMFoiLCJmYXZNb3ZpZXMiOlsiNjY2OTQ2MDQ4OTczNTdjNzk5Y2RjZGZkIiwiNjY2OTQ2MDQ4OTczNTdjNzk5Y2RjZGZlIl0sImlhdCI6MTcyMDQzMTMwNywiZXhwIjoxNzIxMDM2MTA3LCJzdWIiOiJhbGljZV9qb25lcyJ9.3kiz5uTh6K3ZE5mVG9rTEzw7ICIAvkW1mkuGcrA-FPg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userName\": \"c12345\",\r\n    \"password\": \"mysupersecurepass\",\r\n    \"Email\": \"test12344556@test.com\",\r\n    \"birthdate\": \"10-01-2010\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://movie-api-7rmr.onrender.com/users",
+					"protocol": "https",
+					"host": [
+						"movie-api-7rmr",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjY5NTE0Yjg5NzM1N2M3OTljZGNlMDUiLCJ1c2VyTmFtZSI6ImFsaWNlX2pvbmVzIiwiZW1haWwiOiJhbGljZS5qb25lc0BleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoicGFzc3dvcmQ0NTYzIiwiZGF0ZU9mQmlydGgiOiIxOTg1LTAzLTAzVDAwOjAwOjAwLjAwMFoiLCJmYXZNb3ZpZXMiOlsiNjY2OTQ2MDQ4OTczNTdjNzk5Y2RjZGZkIiwiNjY2OTQ2MDQ4OTczNTdjNzk5Y2RjZGZlIl0sImlhdCI6MTcyMDUwNzAxNCwiZXhwIjoxNzIxMTExODE0LCJzdWIiOiJhbGljZV9qb25lcyJ9.ETgAArjd8A9Unl9T26vb1IXgGw68abP05eFgd3zQZJ4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userName\": \"alice_jones\",\r\n    \"password\": \"password4563\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://movie-api-7rmr.onrender.com/login?userName=alice_jones&password=password4563",
+					"protocol": "https",
+					"host": [
+						"movie-api-7rmr",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"login"
+					],
+					"query": [
+						{
+							"key": "userName",
+							"value": "alice_jones"
+						},
+						{
+							"key": "password",
+							"value": "password4563"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add  movies to favMovies",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjY5NTE0Yjg5NzM1N2M3OTljZGNlMDUiLCJ1c2VyTmFtZSI6ImFsaWNlX2pvbmVzIiwiZW1haWwiOiJhbGljZS5qb25lc0BleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoicGFzc3dvcmQ0NTYzIiwiZGF0ZU9mQmlydGgiOiIxOTg1LTAzLTAzVDAwOjAwOjAwLjAwMFoiLCJmYXZNb3ZpZXMiOlsiNjY2OTQ2MDQ4OTczNTdjNzk5Y2RjZGZkIiwiNjY2OTQ2MDQ4OTczNTdjNzk5Y2RjZGZlIl0sImlhdCI6MTcyMDQzMTMwNywiZXhwIjoxNzIxMDM2MTA3LCJzdWIiOiJhbGljZV9qb25lcyJ9.3kiz5uTh6K3ZE5mVG9rTEzw7ICIAvkW1mkuGcrA-FPg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"favMovies\":\"666808be897357c799cdcdf6\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://movie-api-7rmr.onrender.com/users/duggu(aabhas)/movies/666808be897357c799cdcdf6",
+					"protocol": "https",
+					"host": [
+						"movie-api-7rmr",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"users",
+						"duggu(aabhas)",
+						"movies",
+						"666808be897357c799cdcdf6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete  movies from favMovies",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjY5NTE0Yjg5NzM1N2M3OTljZGNlMDUiLCJ1c2VyTmFtZSI6ImFsaWNlX2pvbmVzIiwiZW1haWwiOiJhbGljZS5qb25lc0BleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoicGFzc3dvcmQ0NTYzIiwiZGF0ZU9mQmlydGgiOiIxOTg1LTAzLTAzVDAwOjAwOjAwLjAwMFoiLCJmYXZNb3ZpZXMiOlsiNjY2OTQ2MDQ4OTczNTdjNzk5Y2RjZGZkIiwiNjY2OTQ2MDQ4OTczNTdjNzk5Y2RjZGZlIl0sImlhdCI6MTcyMDQzMTMwNywiZXhwIjoxNzIxMDM2MTA3LCJzdWIiOiJhbGljZV9qb25lcyJ9.3kiz5uTh6K3ZE5mVG9rTEzw7ICIAvkW1mkuGcrA-FPg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"favMovies\":\"666808be897357c799cdcdf6\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://movie-api-7rmr.onrender.com/users/duggu(aabhas)/movies/666808be897357c799cdcdf6",
+					"protocol": "https",
+					"host": [
+						"movie-api-7rmr",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"users",
+						"duggu(aabhas)",
+						"movies",
+						"666808be897357c799cdcdf6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjY5NTE0Yjg5NzM1N2M3OTljZGNlMDUiLCJ1c2VyTmFtZSI6ImFsaWNlX2pvbmVzIiwiZW1haWwiOiJhbGljZS5qb25lc0BleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoicGFzc3dvcmQ0NTYzIiwiZGF0ZU9mQmlydGgiOiIxOTg1LTAzLTAzVDAwOjAwOjAwLjAwMFoiLCJmYXZNb3ZpZXMiOlsiNjY2OTQ2MDQ4OTczNTdjNzk5Y2RjZGZkIiwiNjY2OTQ2MDQ4OTczNTdjNzk5Y2RjZGZlIl0sImlhdCI6MTcyMDUwNzAxNCwiZXhwIjoxNzIxMTExODE0LCJzdWIiOiJhbGljZV9qb25lcyJ9.ETgAArjd8A9Unl9T26vb1IXgGw68abP05eFgd3zQZJ4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userName\": \"alice_jones\",\r\n    \"password\": \"mysupersecurepass\",\r\n    \"email\": \"test12344556@test.com\",\r\n    \"birthdate\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5110/users/alice_jones",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5110",
+					"path": [
+						"users",
+						"alice_jones"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User with Invalid Data",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjY5NTE0Yjg5NzM1N2M3OTljZGNlMDciLCJ1c2VyTmFtZSI6ImNoYXJsaWVfZGF2aXMiLCJlbWFpbCI6ImNoYXJsaWUuZGF2aXNAZXhhbXBsZS5jb20iLCJwYXNzd29yZCI6InBhc3N3b3JkMTIzIiwiZGF0ZU9mQmlydGgiOiIxOTk1LTA1LTA1VDAwOjAwOjAwLjAwMFoiLCJmYXZNb3ZpZXMiOlsiNjY2OTQ2MDQ4OTczNTdjNzk5Y2RjZGZkIiwiNjY2OTQ2MDQ4OTczNTdjNzk5Y2RjZTAwIl0sImlhdCI6MTcyMDUxMDEyNiwiZXhwIjoxNzIxMTE0OTI2LCJzdWIiOiJjaGFybGllX2RhdmlzIn0.PtnuKKE8mTgTTtu-EeOl1r5Z4INgeovOufnI0iGbMec",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userName\": \"als\",\r\n    \"password\": \"\",\r\n    \"Email\": \"\",\r\n    \"birthdate\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://movie-api-7rmr.onrender.com/users/charlie_davis",
+					"protocol": "https",
+					"host": [
+						"movie-api-7rmr",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"users",
+						"charlie_davis"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User with Invalid Data",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjY5NTE0Yjg5NzM1N2M3OTljZGNlMDUiLCJ1c2VyTmFtZSI6ImFsaWNlX2pvbmVzIiwiZW1haWwiOiJhbGljZS5qb25lc0BleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoicGFzc3dvcmQ0NTYzIiwiZGF0ZU9mQmlydGgiOiIxOTg1LTAzLTAzVDAwOjAwOjAwLjAwMFoiLCJmYXZNb3ZpZXMiOlsiNjY2OTQ2MDQ4OTczNTdjNzk5Y2RjZGZkIiwiNjY2OTQ2MDQ4OTczNTdjNzk5Y2RjZGZlIl0sImlhdCI6MTcyMDQzMTMwNywiZXhwIjoxNzIxMDM2MTA3LCJzdWIiOiJhbGljZV9qb25lcyJ9.3kiz5uTh6K3ZE5mVG9rTEzw7ICIAvkW1mkuGcrA-FPg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userName\": \"\",\r\n    \"password\": \"\",\r\n    \"Email\": \"test12344556com\",\r\n    \"birthdate\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5110/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5110",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjY5NTE0Yjg5NzM1N2M3OTljZGNlMDUiLCJ1c2VyTmFtZSI6ImFsaWNlX2pvbmVzIiwiZW1haWwiOiJhbGljZS5qb25lc0BleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoicGFzc3dvcmQ0NTYzIiwiZGF0ZU9mQmlydGgiOiIxOTg1LTAzLTAzVDAwOjAwOjAwLjAwMFoiLCJmYXZNb3ZpZXMiOlsiNjY2OTQ2MDQ4OTczNTdjNzk5Y2RjZGZkIiwiNjY2OTQ2MDQ4OTczNTdjNzk5Y2RjZGZlIl0sImlhdCI6MTcyMDQzMTMwNywiZXhwIjoxNzIxMDM2MTA3LCJzdWIiOiJhbGljZV9qb25lcyJ9.3kiz5uTh6K3ZE5mVG9rTEzw7ICIAvkW1mkuGcrA-FPg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userName\":\"alice_jones\",\r\n    \"password\":\"password4563\",\r\n    \"Email\":\"kld@gmail.com\",\r\n    \"birthDate\":\"12-02-2005\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://movie-api-7rmr.onrender.com/users/alice_jones",
+					"protocol": "https",
+					"host": [
+						"movie-api-7rmr",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"users",
+						"alice_jones"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjY5NTE0Yjg5NzM1N2M3OTljZGNlMDUiLCJ1c2VyTmFtZSI6ImFsaWNlX2pvbmVzIiwiZW1haWwiOiJhbGljZS5qb25lc0BleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoicGFzc3dvcmQ0NTYzIiwiZGF0ZU9mQmlydGgiOiIxOTg1LTAzLTAzVDAwOjAwOjAwLjAwMFoiLCJmYXZNb3ZpZXMiOlsiNjY2OTQ2MDQ4OTczNTdjNzk5Y2RjZGZkIiwiNjY2OTQ2MDQ4OTczNTdjNzk5Y2RjZGZlIl0sImlhdCI6MTcyMDQzMTMwNywiZXhwIjoxNzIxMDM2MTA3LCJzdWIiOiJhbGljZV9qb25lcyJ9.3kiz5uTh6K3ZE5mVG9rTEzw7ICIAvkW1mkuGcrA-FPg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://movie-api-7rmr.onrender.com/users/testabc12345",
+					"protocol": "https",
+					"host": [
+						"movie-api-7rmr",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"users",
+						"testabc12345"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Movies by Director",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhjMmVmYWNhN2I2ZmQzOWUxNWQ4MDAiLCJ1c2VyTmFtZSI6InRlc3RhYmMxMjM0NSIsInBhc3N3b3JkIjoiJDJiJDEwJEl6UUk3Q2h5aEpjdEdwMHBYVDguRGVtQmx1SU1Wd2gvejJqVkhGbUUuak94S3lXd05FQjNpIiwiRW1haWwiOiJ0ZXN0MTIzNDQ1NTZAdGVzdC5jb20iLCJmYXZNb3ZpZXMiOltdLCJfX3YiOjAsImlhdCI6MTcyMDQ2MzEwNiwiZXhwIjoxNzIxMDY3OTA2LCJzdWIiOiJ0ZXN0YWJjMTIzNDUifQ.zxFsm5_gXJf31Y_gkVPaAMvfkigNAu4hg3_lIwAAHn8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://movie-api-7rmr.onrender.com/movies/Director/Rajkumar%20Hirani",
+					"protocol": "https",
+					"host": [
+						"movie-api-7rmr",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"movies",
+						"Director",
+						"Rajkumar%20Hirani"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Movies by Genre",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhjMmVmYWNhN2I2ZmQzOWUxNWQ4MDAiLCJ1c2VyTmFtZSI6InRlc3RhYmMxMjM0NSIsInBhc3N3b3JkIjoiJDJiJDEwJEl6UUk3Q2h5aEpjdEdwMHBYVDguRGVtQmx1SU1Wd2gvejJqVkhGbUUuak94S3lXd05FQjNpIiwiRW1haWwiOiJ0ZXN0MTIzNDQ1NTZAdGVzdC5jb20iLCJmYXZNb3ZpZXMiOltdLCJfX3YiOjAsImlhdCI6MTcyMDQ2MzEwNiwiZXhwIjoxNzIxMDY3OTA2LCJzdWIiOiJ0ZXN0YWJjMTIzNDUifQ.zxFsm5_gXJf31Y_gkVPaAMvfkigNAu4hg3_lIwAAHn8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://movie-api-7rmr.onrender.com/movies/Genre/Romantic",
+					"protocol": "https",
+					"host": [
+						"movie-api-7rmr",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"movies",
+						"Genre",
+						"Romantic"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Movie by Title",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhjMmVmYWNhN2I2ZmQzOWUxNWQ4MDAiLCJ1c2VyTmFtZSI6InRlc3RhYmMxMjM0NSIsInBhc3N3b3JkIjoiJDJiJDEwJEl6UUk3Q2h5aEpjdEdwMHBYVDguRGVtQmx1SU1Wd2gvejJqVkhGbUUuak94S3lXd05FQjNpIiwiRW1haWwiOiJ0ZXN0MTIzNDQ1NTZAdGVzdC5jb20iLCJmYXZNb3ZpZXMiOltdLCJfX3YiOjAsImlhdCI6MTcyMDQ2MzEwNiwiZXhwIjoxNzIxMDY3OTA2LCJzdWIiOiJ0ZXN0YWJjMTIzNDUifQ.zxFsm5_gXJf31Y_gkVPaAMvfkigNAu4hg3_lIwAAHn8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://movie-api-7rmr.onrender.com/movies/Titanic",
+					"protocol": "https",
+					"host": [
+						"movie-api-7rmr",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"movies",
+						"Titanic"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Movies",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhjMmM4MDhiOTg3YzU2MWI5YzdlNTkiLCJ1c2VyTmFtZSI6InRlc3RhYmMxMjM0NTY3ODkiLCJwYXNzd29yZCI6IiQyYiQxMCRlbUdJZngwbmVSbkVEa1FYdDIvVndPSEFudk40eVo0OUhpNm5wNm1yMzVwZTMuaHlNL3JCUyIsIkVtYWlsIjoidGVzdDEyMzQ0NTU2QHRlc3QuY29tIiwiZmF2TW92aWVzIjpbXSwiX192IjowLCJpYXQiOjE3MjA0NjI3MzYsImV4cCI6MTcyMTA2NzUzNiwic3ViIjoidGVzdGFiYzEyMzQ1Njc4OSJ9.WayIQsnwWNpOVD4S4OBPheGm2PX1OFRET60067IdZNI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://movie-api-7rmr.onrender.com/movies",
+					"protocol": "https",
+					"host": [
+						"movie-api-7rmr",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"movies"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
