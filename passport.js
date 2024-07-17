@@ -5,8 +5,8 @@ const passport = require("passport"),
 // bcrypt = require("bcrypt");
 
 let Users = Models.User,
-JWTStrategy = passportJWT.Strategy,
-ExtractJwt = passportJWT.ExtractJwt;
+  JWTStrategy = passportJWT.Strategy,
+  ExtractJwt = passportJWT.ExtractJwt;
 
 //   basic HTTP authentication for login request
 passport.use(
@@ -21,16 +21,19 @@ passport.use(
       await Users.findOne({ userName: username })
         .then((user) => {
           if (!user) {
-            console.log('incorrect username');
+            console.log("incorrect username");
             return callback(null, false, {
-              message: 'Incorrect username or password.',
+              message: "Incorrect username or password.",
             });
           }
-          if (!user.validatePassword == function(Password){
-            console.log('incorrect password');
-            return callback(null, false, { message: 'Incorrect password.' });
-          })
-          console.log('finished');
+          if (
+            !user.validatePassword ==
+            function (Password) {
+              console.log("incorrect password");
+              return callback(null, false, { message: "Incorrect password." });
+            }
+          )
+            console.log("finished");
           return callback(null, user);
         })
         .catch((error) => {
@@ -38,7 +41,7 @@ passport.use(
             console.log(error);
             return callback(error);
           }
-        })
+        });
     }
   )
 );
