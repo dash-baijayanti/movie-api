@@ -22,15 +22,6 @@ let auth = require("./auth")(app);
 const passport = require("passport");
 require("./passport");
 
-// mongoose.connect:mongodb+srv://dashbaijayanti:DSE%40Life2023@baijayanti.jeczvvr.mongodb.net/MyFlix
-// mongoose.connect(process.env.URL, {});
-// mongoose.connect(uri, {
-//   retryWrites: true,
-//   // tls: true,
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// });
-
 const uri = process.env.URI;
 // "mongodb+srv://dashbaijayanti:DSE%40Life2023@baijayanti.jeczvvr.mongodb.net/MyFlix";
 
@@ -225,23 +216,6 @@ app.delete(
       });
   }
 );
-
-//    async (req, res) => {
-//   await Users.findOneAndDelete({ userName: req.params.userName })
-//     .then((movieid) => {
-//       if (!movieid) {
-//         res.status(400).send(req.params.MovieId + "was not found");
-//       } else {
-//         res.status(200).send(req.params.MovieId + "was deleted");
-//       }
-//     })
-//     .catch((err) => {
-//       console.error(err);
-//       res.status(500).send("Error:" + err);
-//     });
-// });
-//
-// app.delete( '/users/:id/:MovieId', passport.authenticate('jwt', { session: false }), (req, res) => { Users.findOneAndUpdate( { _id: req.params.id }, { $pull: { FavoriteMovies: req.params.MovieId }, }, { new: true } ) .then((updatedUser) => { res.json(updatedUser); }) .catch((err) => { console.error(err); res.status(500).send('Error: ' + err); });
 
 // DELETE user by username
 app.delete("/users/:userName", async (req, res) => {
