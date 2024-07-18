@@ -197,11 +197,11 @@ app.post(
 
 // DELETE movie from favmovies list
 app.delete(
-  "/users/:id/:MovieId",
+  "/users/:userName/:movies/:MovieId",
   passport.authenticate("jwt", { session: false }),
   async (req, res) => {
     await Users.findOneAndUpdate(
-      { _id: req.params.id },
+      {  userName: req.params.userName },
       {
         $pull: { favMovies: req.params.MovieId },
       },
