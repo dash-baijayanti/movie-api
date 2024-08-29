@@ -16,6 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // using CORS
 const cors = require("cors");
 app.use(cors());
+app.use(bodyParser.json());
 
 // import auth.js and passport.js file
 let auth = require("./auth")(app);
@@ -30,7 +31,6 @@ mongoose.connect(uri, {
   tls: true,
 });
 
-app.use(bodyParser.json());
 // server
 app.use(morgan("common"));
 
@@ -201,7 +201,7 @@ app.delete(
   passport.authenticate("jwt", { session: false }),
   async (req, res) => {
     await Users.findOneAndUpdate(
-      {  userName: req.params.userName },
+      { userName: req.params.userName },
       {
         $pull: { favMovies: req.params.MovieId },
       },
