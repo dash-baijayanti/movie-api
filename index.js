@@ -261,6 +261,22 @@ app.get(
   }
 );
 
+// GET movies by Id
+app.get(
+  "/movies/:MovieId",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    await Movies.findOne({ Title: req.params.MovieId })
+      .then((movie) => {
+        res.status(200).json(movie);
+      })
+      .catch((err) => {
+        console.error(err);
+        res.status(500).send("Error:" + err);
+      });
+  }
+);
+
 //GET Genre description by name
 app.get(
   "/movies/Genre/:Name",
